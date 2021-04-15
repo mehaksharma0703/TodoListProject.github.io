@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+    <script defer src="script.js"></script>
+        
+</head>
+<body>
+    <h1 class="title">Checklist ! </h1>
+
+    <div class="list">
+        <!-- list -->
+        <h2 class="my-list">my list</h2> 
+
+        <ul class="list-names" data-lists>
+        </ul>
+
+        <form action="" data-new-list-form>
+            <input type="text" 
+            class="new-list-name" 
+            data-new-list-input
+            placeholder="new list name"
+            aria-label="new list name">
+
+            <button class="btn" aria-label="create new list">+</button>
+        </form>
+    </div>
+
+    <div class="todo-task" data-list-display-container>
+        <div class="todo-header">
+            <h2 class="task-title" data-list-title>Read</h2>
+            <p class="task-count" data-list-count>3 tasks remaining</p>
+        </div>
+
+        <div class="todo-body">
+            <div class="tasks" data-tasks>
+            </div>
+
+            <div class="new-task">
+                <form action="" data-new-task-form>
+                    <input type="text"
+                    data-new-task-input 
+                    class="new-task-name" 
+                    placeholder="enter new task"
+                    aria-label="enter new task">
+        
+                    <button class="btn" aria-label="enter new task">+</button>
+                </form>
+                
+            </div>
+
+            <div class="delete-task">
+                <button class="btn-delete" data-clear-complete-tasks-button>
+                   clear completed tasks
+                </button>
+                <button class="btn-delete" data-delete-list-button>
+                    delete list
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <template id="task-template">
+        <div class="task">
+            <input type="checkbox" />
+            <label>
+                <span class="custom-checkbox"></span>
+            </label>
+        </div>
+    </template>
+    
+</body>
+</html>

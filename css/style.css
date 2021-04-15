@@ -1,0 +1,257 @@
+:root{
+    --clr-primary : rgb(245, 197, 245);
+    --clr-light: #f4f4f4;
+    --clr-dark:black;
+    --clr-warning: rgba(99,36,36);
+}
+
+*,
+*::before,
+*::after {
+    font-size: inherit;
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: "work sans", sans serif;
+    font-weight: 300;
+    font-size: 1.5rem;
+    background-color: var(--clr-primary);
+    color: var(--clr-dark);
+
+    display: grid;
+    grid:
+       "header header header header" auto
+       "...... lists active ......." auto /
+       1fr  minmax(100px ,400px) minmax(350px,500px) 1fr;
+}
+
+.title{
+    grid-area: header;
+    text-align: center;
+    font-size: calc(5vw + 2rem);
+    font-weight: 900;
+    color: rgba(0,0,0,0.2);
+    /* opacity: 0.2; */
+    letter-spacing: 1px;
+    margin: -0.1em 0 0 0.5em;
+}
+
+.list{
+    grid-area: lists;
+}
+
+.list-names{
+    font-size: 1.2rem;
+    line-height: 1.7;
+    list-style: circle;
+    padding-left: 1.1em;
+}
+
+.list-name{
+    cursor: pointer;
+}
+
+.list-name:hover{
+    opacity: 0.7;
+}
+
+.active-list{
+    /* font-size: 1.5rem; */
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+form{
+    display: flex;
+}
+
+.btn{
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    color: var(--clr-dark);
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-right: 0.25em;
+    transition:opacity 150ms ease-in;
+}
+
+.btn:hover{
+    opacity: 0.6;
+}
+
+.btn-delete{
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    color: var(--clr-dark);
+    font-size:1rem ;
+
+}
+
+
+
+.new-list-name,.new-task-name{
+    background: transparent;
+    border: 0;
+    color: inherit;
+    border-bottom: 1px solid currentColor ;
+    /* font-size: inherit; */
+    outline: none;
+
+    transition: border-bottom 150ms ease-in;
+    order: 2;
+    font-size: 1.2rem;
+    padding: 0.5em;
+}
+
+
+
+.new-list-name:focus,.new-task-name:focus{
+    border-bottom-width: 3px ;
+
+}
+
+
+.new-list-name:focus::placeholder,.new-task-name:focus::placeholder{
+    opacity: 0.2;
+}
+
+
+
+.todo-task{
+    --spacer:2rem;
+
+    grid-area: active;
+    /* background:rgb(234, 253, 234); */
+    /* rgb(252, 225, 252) */
+    background: rgb(237, 226, 250);
+    
+}
+
+.todo-header{
+    margin-top: 0;
+    padding: var(--spacer);
+   background: rgb(224, 223, 223);
+   display: flex;
+   text-align: center;
+   
+   justify-content: space-between;
+} 
+
+.task-title{
+    margin: 0 1em 0 0;
+    font-size: 2rem;
+}
+
+.task-count{
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.todo-body{
+    padding: 2rem;
+    position: relative;
+}
+
+[type="checkbox"]{
+    position: absolute;
+    opacity: 0;
+
+}
+
+.task label{
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 0.9em;
+}
+
+/* .enter-new-task{
+    margin-bottom: 0;
+} */
+
+.task{
+    position: relative;
+}
+
+.task::after{
+    content: '';
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0%;
+    height: 1px;
+    background-color: currentColor;
+    opacity: 0.1;
+
+}
+
+.custom-checkbox{
+    --size:0.6em;
+    display: inline-block;
+    height: var(--size);
+    width: var(--size);
+    margin-right: var(--size);
+    cursor: pointer;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    transform: scale(1);
+    transition: transform 300ms ease-in-out;
+}
+
+.task:hover .custom-checkbox,
+[type="checkbox"]:focus + label .custom-checkbox{
+    transform: scale(1.2);
+    
+}
+
+[type="checkbox"]:checked + label .custom-checkbox{
+    background:var(--clr-primary) ;
+    border-color:var(--clr-primary) ;
+    box-shadow: inset 0 0 0px 2px white;
+}
+
+[type="checkbox"]:checked + label {
+    opacity: 0.5;
+}
+
+.task label::after {
+    content: '';
+    position: absolute;
+    left: 1.2em;
+    right: 0;
+    height: 3px;
+    background:black ;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 150ms ease-in-out;
+}
+
+[type="checkbox"]:checked + label::after{
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.delete-task{
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -35px;
+    
+}
+
+.btn-delete{
+    opacity: 0.7;
+    font-size:1rem;
+}
+
+.btn-delete:hover{
+    color: var(--clr-warning);
+}
